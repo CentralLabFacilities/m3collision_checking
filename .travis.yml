@@ -7,9 +7,9 @@ env:
   global:
     - ROS_DISTRO=hydro
 #    - ROS_DISTRO=indigo
-  matrix:
-    - M3CORE_BUILD_TYPE=Debug
-    - M3CORE_BUILD_TYPE=Release
+#  matrix:
+#    - M3CORE_BUILD_TYPE=Debug
+#    - M3CORE_BUILD_TYPE=Release
 
 
 before_install: # Use this to prepare the system to install prerequisites or dependencies
@@ -21,17 +21,17 @@ before_install: # Use this to prepare the system to install prerequisites or dep
   
 install: # Use this to install any prerequisites or dependencies necessary to run your build
   # Create workspace
-  - sudo apt-get install ros-${ROS_DISTRO}-desktop-full
-  - sudo apt-get install ros-${ROS_DISTRO}-moveit-full
+  - sudo apt-get install ros-$ROS_DISTRO-desktop-full
+  - sudo apt-get install ros-$ROS_DISTRO-moveit-full
 
 before_script: # Use this to prepare your build for testing e.g. copy database configurations, environment variables, etc.
   - sudo rosdep init
   - rosdep update
-  - source /opt/ros/${ROS_DISTRO}/setup.bash
+  - source /opt/ros/$ROS_DISTRO/setup.bash
   ## Create the ROS-workspace
   - mkdir -p ~/catkin_ws/src
   - export REPOSITORY_NAME=${PWD##*/}
-  - ln -s $(pwd) ~/catkin_ws/src/${REPOSITORY_NAME}
+  - ln -s $(pwd) ~/catkin_ws/src/$REPOSITORY_NAME
   - cd ~/catkin_ws/src
   - catkin_init_workspace
 
