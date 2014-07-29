@@ -4,11 +4,13 @@ compiler:
   - gcc
 
 env:
-  matrix:
-    - ROS_DISTRO=hydro 
+  global:
+    - ROS_DISTRO=hydro
 #    - ROS_DISTRO=indigo
+  matrix:
     - M3CORE_BUILD_TYPE=Debug
     - M3CORE_BUILD_TYPE=Release
+
 
 before_install: # Use this to prepare the system to install prerequisites or dependencies
   # Define some config vars
