@@ -3,9 +3,9 @@ language:
 compiler:
   - gcc
 
-env:
-  global:
-    - ROS_DISTRO=hydro
+#env:
+#  global:
+#    - ROS_DISTRO=hydro
 #    - ROS_DISTRO=indigo
 #  matrix:
 #    - M3CORE_BUILD_TYPE=Debug
@@ -13,6 +13,7 @@ env:
 
 
 before_install: # Use this to prepare the system to install prerequisites or dependencies
+  - export ROS_DISTRO=hydro
   # Define some config vars
   - codename=`cat /etc/lsb-release | grep -m 1 "DISTRIB_CODENAME=" | cut -d "=" -f2`
   - sudo sh -c "echo 'deb http://packages.ros.org/ros/ubuntu $codename main' > /etc/apt/sources.list.d/ros-latest.list"
